@@ -15,19 +15,19 @@ public class FlightDetailsDao implements IFlightDetails{
 
 	@Override
 	public void addFlight(FlightDetails fd) throws SQLException {
-		con=DBConnect.connect();
-		st=con.createStatement();
-		System.out.println("Flight Details: Id,FlightCompany,TravelDate,Source,Destination");
-		fd.setFlightId(sc.nextInt());
-		sc.nextLine();
-		fd.setFlightCompany(sc.nextLine());
-		fd.setTravelDate(sc.nextLine());
-		fd.setSource(sc.nextLine());
-		fd.setDestination(sc.nextLine());
-		String insertFlights="insert into flightdetails values("+fd.getFlightId()+",'"+fd.getFlightCompany()+"','"
-				+fd.getTravelDate()+"','"+fd.getSource()+"','"+fd.getDestination()+"')";
-				st.executeUpdate(insertFlights);
-				System.out.println("Data Inserted");
+//		con=DBConnect.connect();
+//		st=con.createStatement();
+//		System.out.println("Flight Details: Id,FlightCompany,TravelDate,Source,Destination");
+//		fd.setFlightId(sc.nextInt());
+//		sc.nextLine();
+//		fd.setFlightCompany(sc.nextLine());
+//		fd.setTravelDate(sc.nextLine());
+//		fd.setSource(sc.nextLine());
+//		fd.setDestination(sc.nextLine());
+//		String insertFlights="insert into flightdetails values("+fd.getFlightId()+",'"+fd.getFlightCompany()+"','"
+//				+fd.getTravelDate()+"','"+fd.getSource()+"','"+fd.getDestination()+"')";
+//				st.executeUpdate(insertFlights);
+//				System.out.println("Data Inserted");
 	}
 
 	@Override
