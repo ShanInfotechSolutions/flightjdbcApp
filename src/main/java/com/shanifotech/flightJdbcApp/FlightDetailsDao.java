@@ -17,6 +17,7 @@ public class FlightDetailsDao implements IFlightDetails{
 	public void addFlight(FlightDetails fd) throws ClassNotFoundException,SQLException {
 		try {
 		con=DBConnect.connect();
+		con.setAutoCommit(false);
 		st=con.createStatement();
 		System.out.println("Flight Details: Id,FlightCompany,TravelDate,Source,Destination");
 		fd.setFlightId(sc.nextInt());
@@ -28,7 +29,9 @@ public class FlightDetailsDao implements IFlightDetails{
 		String insertFlights="insert into flightdetails values("+fd.getFlightId()+",'"+fd.getFlightCompany()+"','"
 				+fd.getTravelDate()+"','"+fd.getSource()+"','"+fd.getDestination()+"')";
 				st.executeUpdate(insertFlights);
+				con.commit();
 				System.out.println("Data Inserted");
+				con.close();
 		}
 		catch (Exception e) {
 			// TODO: handle exception
@@ -43,12 +46,16 @@ public class FlightDetailsDao implements IFlightDetails{
 	public void getFlight() throws ClassNotFoundException,SQLException {
 		try {
 		con=DBConnect.connect();
+		con.setAutoCommit(false);
+		
 		st=con.createStatement();
 		String queryResult="select * from flightdetails";// result set id used for fetching the data from the database and points from the 1st row
 		rs=st.executeQuery(queryResult);
 		while(rs.next()) {
 			System.out.println("Flight Id: "+rs.getInt(1));// index number  based which uses digits, column based which uses column names
 		}
+		con.commit();
+		con.close();
 		}
 		catch (Exception e) {
 			// TODO: handle exception
