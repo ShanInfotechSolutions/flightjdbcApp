@@ -36,6 +36,8 @@ public class FlightDetailsDao implements IFlightDetails{
 
 	@Override
 	public void getFlight() throws SQLException {
+		con=DBConnect.connect();
+		st=con.createStatement();
 		String queryResult="select * from flightdetails";// result set id used for fetching the data from the database and points from the 1st row
 		rs=st.executeQuery(queryResult);
 		while(rs.next()) {
