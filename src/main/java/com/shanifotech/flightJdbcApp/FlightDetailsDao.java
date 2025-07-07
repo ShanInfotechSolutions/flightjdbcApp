@@ -14,7 +14,7 @@ public class FlightDetailsDao implements IFlightDetails{
 	
 
 	@Override
-	public void addFlight(FlightDetails fd) throws SQLException {
+	public void addFlight(FlightDetails fd) throws Exception {
 		con=DBConnect.connect();
 		st=con.createStatement();
 		System.out.println("Flight Details: Id,FlightCompany,TravelDate,Source,Destination");
@@ -35,7 +35,7 @@ public class FlightDetailsDao implements IFlightDetails{
 		}
 
 	@Override
-	public void getFlight() throws SQLException {
+	public void getFlight() throws Exception {
 		con=DBConnect.connect();
 		st=con.createStatement();
 		String queryResult="select * from flightdetails";// result set id used for fetching the data from the database and points from the 1st row
