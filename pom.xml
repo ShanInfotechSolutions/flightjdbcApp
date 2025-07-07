@@ -51,22 +51,30 @@
 	</dependencies>
 
 	<build>
-		
-			<plugins>
-				<!-- JAR Plugin to specify the main class -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.3.0</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>com.shanifotech.flightJdbcApp.App</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
-			</plugins>
-		
-	</build>
+  <plugins>
+    <!-- JAR Plugin to embed Main-Class in manifest -->
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-jar-plugin</artifactId>
+      <version>3.3.0</version>
+      <configuration>
+        <archive>
+          <manifest>
+            <mainClass>com.shanifotech.flightJdbcApp.App</mainClass>
+          </manifest>
+        </archive>
+      </configuration>
+    </plugin>
+
+    <!-- Exec Plugin to run project directly via mvn exec:java -->
+    <plugin>
+      <groupId>org.codehaus.mojo</groupId>
+      <artifactId>exec-maven-plugin</artifactId>
+      <version>3.1.0</version>
+      <configuration>
+        <mainClass>com.shanifotech.flightJdbcApp.App</mainClass>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
 </project>
